@@ -57,17 +57,31 @@ const Index = () => {
   }, []);
 
   const fetchNews = async () => {
-    toast({
-      title: "Загрузка новостей...",
-      description: "Получаем актуальную информацию"
-    });
+    try {
+      const response = await fetch('https://functions.poehali.dev/a711d560-ba30-4b95-b20c-17fd0ee11075');
+      const data = await response.json();
+      setNews(data);
+    } catch (error) {
+      toast({
+        title: "Ошибка загрузки",
+        description: "Не удалось загрузить новости",
+        variant: "destructive"
+      });
+    }
   };
 
   const fetchTickets = async () => {
-    toast({
-      title: "Загрузка афиши...",
-      description: "Получаем доступные билеты"
-    });
+    try {
+      const response = await fetch('https://functions.poehali.dev/860772ab-0f6f-475c-95c8-7c244d8daab5');
+      const data = await response.json();
+      setTickets(data);
+    } catch (error) {
+      toast({
+        title: "Ошибка загрузки",
+        description: "Не удалось загрузить афишу",
+        variant: "destructive"
+      });
+    }
   };
 
   const handleAddNews = async () => {
@@ -80,19 +94,30 @@ const Index = () => {
       return;
     }
 
-    const newItem: News = {
-      id: Date.now(),
-      ...newNewsForm,
-      published_date: new Date().toISOString()
-    };
+    try {
+      const response = await fetch('https://functions.poehali.dev/a711d560-ba30-4b95-b20c-17fd0ee11075', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newNewsForm)
+      });
 
-    setNews([newItem, ...news]);
-    setNewNewsForm({ title: '', description: '', content: '', image_url: '' });
-    
-    toast({
-      title: "Новость добавлена!",
-      description: "Новость появится на главной странице"
-    });
+      if (response.ok) {
+        await fetchNews();
+        setNewNewsForm({ title: '', description: '', content: '', image_url: '' });
+        toast({
+          title: "Новость добавлена!",
+          description: "Новость появится на главной странице"
+        });
+      }
+    } catch (error) {
+      toast({
+        title: "Ошибка",
+        description: "Не удалось добавить новость",
+        variant: "destructive"
+      });
+    }
   };
 
   const handleAddTicket = async () => {
@@ -105,18 +130,30 @@ const Index = () => {
       return;
     }
 
-    const newItem: Ticket = {
-      id: Date.now(),
-      ...newTicketForm
-    };
+    try {
+      const response = await fetch('https://functions.poehali.dev/860772ab-0f6f-475c-95c8-7c244d8daab5', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newTicketForm)
+      });
 
-    setTickets([newItem, ...tickets]);
-    setNewTicketForm({ event_name: '', event_date: '', venue: '', price: '', category: '', image_url: '' });
-    
-    toast({
-      title: "Билет создан!",
-      description: "Билет добавлен в афишу"
-    });
+      if (response.ok) {
+        await fetchTickets();
+        setNewTicketForm({ event_name: '', event_date: '', venue: '', price: '', category: '', image_url: '' });
+        toast({
+          title: "Билет создан!",
+          description: "Билет добавлен в афишу"
+        });
+      }
+    } catch (error) {
+      toast({
+        title: "Ошибка",
+        description: "Не удалось создать билет",
+        variant: "destructive"
+      });
+    }
   };
 
   return (

@@ -1,0 +1,31 @@
+{
+  "tests": [
+    {
+      "name": "Get all tickets",
+      "method": "GET",
+      "path": "/",
+      "expectedStatus": 200,
+      "expectedBody": [],
+      "bodyMatcher": "type"
+    },
+    {
+      "name": "Create ticket",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "event_name": "Test Event",
+        "event_date": "2024-12-31",
+        "venue": "Main Hall",
+        "price": "1000₽",
+        "category": "Ballet",
+        "image_url": "https://example.com/image.jpg"
+      },
+      "expectedStatus": 201,
+      "expectedBody": {
+        "id": "number",
+        "event_name": "string"
+      },
+      "bodyMatcher": "partial"
+    }
+  ]
+}
