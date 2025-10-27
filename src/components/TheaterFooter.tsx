@@ -3,9 +3,9 @@ import Icon from '@/components/ui/icon';
 
 const TheaterFooter = () => {
   return (
-    <footer className="border-t border-border mt-20 py-12 bg-card">
-      <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-3 gap-8">
+    <footer className="border-t border-border mt-20 py-16 bg-card">
+      <div className="container mx-auto px-6 lg:px-8 max-w-7xl">
+        <div className="grid md:grid-cols-3 gap-12">
           <div>
             <h3 className="text-2xl font-bold text-primary mb-4">PIKALOVA 5</h3>
             <p className="text-muted-foreground">Театр мирового уровня в самом сердце города</p>

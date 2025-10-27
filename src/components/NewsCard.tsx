@@ -18,11 +18,11 @@ interface NewsCardProps {
 const NewsCard = ({ news, onClick }: NewsCardProps) => {
   return (
     <Card 
-      className="overflow-hidden hover:shadow-2xl hover:shadow-primary/20 transition-all duration-300 cursor-pointer group"
+      className="overflow-hidden hover:shadow-2xl hover:shadow-primary/20 transition-all duration-300 cursor-pointer group h-full flex flex-col"
       onClick={onClick}
     >
       {news.image_url && (
-        <div className="h-64 overflow-hidden">
+        <div className="h-64 lg:h-80 overflow-hidden">
           <img 
             src={news.image_url} 
             alt={news.title}
@@ -30,8 +30,8 @@ const NewsCard = ({ news, onClick }: NewsCardProps) => {
           />
         </div>
       )}
-      <CardHeader>
-        <CardTitle className="text-2xl group-hover:text-primary transition-colors">{news.title}</CardTitle>
+      <CardHeader className="flex-grow">
+        <CardTitle className="text-xl lg:text-2xl group-hover:text-primary transition-colors">{news.title}</CardTitle>
         <CardDescription>{news.description}</CardDescription>
       </CardHeader>
       <CardFooter className="text-sm text-muted-foreground flex items-center gap-2">

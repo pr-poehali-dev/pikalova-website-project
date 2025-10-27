@@ -9,9 +9,9 @@ interface TheaterHeaderProps {
 const TheaterHeader = ({ adminMode, onToggleAdmin }: TheaterHeaderProps) => {
   return (
     <header className="border-b border-border sticky top-0 bg-background/95 backdrop-blur z-50">
-      <div className="container mx-auto px-4 py-6">
+      <div className="container mx-auto px-6 lg:px-8 py-6 lg:py-8 max-w-7xl">
         <div className="flex justify-between items-center">
-          <h1 className="text-5xl font-bold text-primary tracking-wider">PIKALOVA 5</h1>
+          <h1 className="text-4xl lg:text-6xl font-bold text-primary tracking-wider">PIKALOVA 5</h1>
           <Button 
             variant={adminMode ? "default" : "outline"}
             onClick={onToggleAdmin}

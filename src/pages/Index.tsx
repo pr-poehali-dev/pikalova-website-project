@@ -164,9 +164,9 @@ const Index = () => {
       <TheaterHeader adminMode={adminMode} onToggleAdmin={() => setAdminMode(!adminMode)} />
       <HeroSection />
 
-      <main className="container mx-auto px-4 py-12">
+      <main className="container mx-auto px-6 lg:px-8 py-16 max-w-7xl">
         <Tabs defaultValue="tickets" className="w-full">
-          <TabsList className="grid w-full grid-cols-3 max-w-2xl mx-auto mb-12">
+          <TabsList className="grid w-full grid-cols-3 max-w-4xl mx-auto mb-16">
             <TabsTrigger value="tickets" className="text-lg">
               <Icon name="Ticket" className="mr-2" size={18} />
               Билеты
@@ -190,7 +190,7 @@ const Index = () => {
               />
             )}
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
               {tickets.map((ticket) => (
                 <TicketCard key={ticket.id} ticket={ticket} />
               ))}
@@ -229,7 +229,7 @@ const Index = () => {
               />
             )}
 
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {news.map((item) => (
                 <NewsCard 
                   key={item.id} 

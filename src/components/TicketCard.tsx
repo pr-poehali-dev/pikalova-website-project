@@ -17,9 +17,9 @@ interface TicketCardProps {
 
 const TicketCard = ({ ticket }: TicketCardProps) => {
   return (
-    <Card className="overflow-hidden hover:shadow-2xl hover:shadow-primary/20 transition-all duration-300 group">
+    <Card className="overflow-hidden hover:shadow-2xl hover:shadow-primary/20 transition-all duration-300 group h-full flex flex-col">
       {ticket.image_url && (
-        <div className="h-48 overflow-hidden">
+        <div className="h-56 lg:h-64 overflow-hidden">
           <img 
             src={ticket.image_url} 
             alt={ticket.event_name}
@@ -27,9 +27,9 @@ const TicketCard = ({ ticket }: TicketCardProps) => {
           />
         </div>
       )}
-      <CardHeader>
+      <CardHeader className="flex-grow">
         <div className="flex justify-between items-start mb-2">
-          <CardTitle className="text-2xl">{ticket.event_name}</CardTitle>
+          <CardTitle className="text-xl lg:text-2xl">{ticket.event_name}</CardTitle>
           {ticket.category && (
             <span className="text-xs px-2 py-1 bg-primary/20 text-primary rounded-full">
               {ticket.category}

@@ -18,11 +18,11 @@ interface ScheduleCardProps {
 const ScheduleCard = ({ ticket }: ScheduleCardProps) => {
   return (
     <Card className="hover:border-primary/50 transition-all">
-      <CardHeader>
-        <div className="flex items-center justify-between">
-          <div>
-            <CardTitle className="text-3xl mb-2">{ticket.event_name}</CardTitle>
-            <CardDescription className="text-lg flex items-center gap-4">
+      <CardHeader className="py-6 lg:py-8">
+        <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
+          <div className="flex-grow">
+            <CardTitle className="text-2xl lg:text-4xl mb-3">{ticket.event_name}</CardTitle>
+            <CardDescription className="text-base lg:text-lg flex flex-wrap items-center gap-3 lg:gap-6">
               <span className="flex items-center gap-2">
                 <Icon name="Calendar" size={18} />
                 {ticket.event_date}
@@ -36,9 +36,9 @@ const ScheduleCard = ({ ticket }: ScheduleCardProps) => {
             </CardDescription>
           </div>
           {ticket.price && (
-            <div className="text-right">
+            <div className="text-left lg:text-right shrink-0">
               <p className="text-sm text-muted-foreground">Билеты</p>
-              <p className="text-2xl font-bold text-primary">{ticket.price}</p>
+              <p className="text-2xl lg:text-3xl font-bold text-primary">{ticket.price}</p>
             </div>
           )}
         </div>
